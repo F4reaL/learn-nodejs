@@ -17,14 +17,52 @@
                 <td>{{this.age}}</td>
                 <td>{{this.gender}}</td>
                 <td>
-                    <a href="/users/{{this._id}}/edit">Sửa</a>
-                    <a href="#">Xóa</a>
+                    <a class="mr-4" href="/users/{{this._id}}/edit">Sửa</a>
+                    <a href="" data-toggle="modal" data-target="#deleteModal" data-id="{{this._id}}" class="btn-delete-friend">Xóa</a>
                 </td>
             </tr>
             {{/each}}
            
         </tbody>
     </table>
-
-
 </div>
+
+{{!-- Form --}}
+<form method="POST" name="deleteForm"></form>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Xóa bạn bè</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn chắc chắn muốn xóa bạn bè với người này chứ ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="deleteUserBtn">Xóa bạn</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    var deleteForm = document.forms['deleteForm']
+    var deleteButtons = document.querySelectorAll('.btn-delete-friend')
+    
+    deleteButtons.forEach((btn)=>{
+        btn.onclick = (e)=>{
+            var userId = e.target.dataset.id
+            deleteForm.action = "/users/" + userId + "?_method=DELETE"
+        }
+    })
+
+    var deleteUserBtn = document.querySelector('#deleteUserBtn')
+    deleteUserBtn.onclick = ()=> { 
+        deleteForm.submit()
+    }
+</script>

@@ -60,6 +60,12 @@ class UsersController {
     .then(()=> res.redirect('/me/my-friends'))
     .catch(next)
   }
+
+  delete(req,res, next){
+    User.deleteOne({_id: req.params._id})
+    .then(()=> res.redirect('back'))
+    .catch(next)
+  }
 }
 
 module.exports = new UsersController();
