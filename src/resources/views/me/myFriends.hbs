@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <h2>Danh sách bạn bè của tôi</h2>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col" colspan="2">Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td> <img style="width: 28px; height: 28px; border-radius: 50%;" class="mr-2" class="friend-avatar" src="{{this.avatar}}" alt="avatar">{{this.name}}</td>
+                <td>{{this.age}}</td>
+                <td>{{this.gender}}</td>
+                <td>
+                    <a href="/users/{{this._id}}/edit">Sửa</a>
+                    <a href="#">Xóa</a>
+                </td>
+            </tr>
+            {{/each}}
+           
+        </tbody>
+    </table>
+
+
+</div>

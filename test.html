@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border: 10px solid black;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        const obj = {name:'Khánh Hòa', age:12}
+        const obj2 = obj
+        const obj3 = {name,...obj}
+        obj.gender = 'Male'
+        console.log(obj)
+        console.log(obj2)
+        console.log(obj3)
+    </script>
+</body>
+</html>
